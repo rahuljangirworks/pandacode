@@ -79,6 +79,12 @@ export function builtArtifact(names, releaseVersion, releaseTarget) {
   return expected;
 }
 
+export function builtRpmArtifact(names, releaseVersion, releaseTarget) {
+  const expected = targetConfig(releaseTarget).rpmBuilt?.(version(releaseVersion));
+  if (!expected || !names.includes(expected)) throw new Error(`Tauri did not produce ${expected || 'an RPM bundle'}.`);
+  return expected;
+}
+
 export function checksumLine(sha256, filename) {
   if (!/^[a-f0-9]{64}$/.test(sha256)) throw new Error('Invalid SHA-256 digest.');
   return `${sha256}  ${filename}\n`;
@@ -156,6 +162,13 @@ async function main() {
   await copyFile(source, destination);
   if (releaseTarget.startsWith('linux-')) await chmod(destination, 0o755);
   await writeFile(`${destination}.sha256`, checksumLine(await digest(destination), config.asset));
+  if (config.rpmAsset) {
+    const rpmDir = resolve(bundleRoot, 'rpm');
+    const rpmSource = resolve(rpmDir, builtRpmArtifact(await readdir(rpmDir), releaseVersion, releaseTarget));
+    const rpmDestination = resolve(output, config.rpmAsset);
+    await copyFile(rpmSource, rpmDestination);
+    await writeFile(`${rpmDestination}.sha256`, checksumLine(await digest(rpmDestination), config.rpmAsset));
+  }
   if (build.updater) {
     const updater = resolve(bundleRoot, config.updater(releaseVersion));
     if (config.updaterAsset !== config.asset) await copyFile(updater, resolve(output, config.updaterAsset));

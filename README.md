@@ -20,12 +20,9 @@ system's webview: no bundled Chromium, resident Node server, React runtime or
 embedded editor engine.
 
 <p align="center">
-  <b>Download:</b>
-  <a href="https://github.com/rahuljangirworks/pandacode/releases/latest/download/PandaCode-macOS-arm64.dmg">macOS (Apple silicon)</a> ·
-  <a href="https://github.com/rahuljangirworks/pandacode/releases/latest/download/PandaCode-Windows-x64-setup.exe">Windows x64</a> ·
-  <a href="https://github.com/rahuljangirworks/pandacode/releases/latest/download/PandaCode-Windows-arm64-setup.exe">Windows arm64</a> ·
-  <a href="https://github.com/rahuljangirworks/pandacode/releases/latest/download/PandaCode-Linux-x86_64.AppImage">Linux x64</a> ·
-  <a href="https://github.com/rahuljangirworks/pandacode/releases/latest/download/PandaCode-Linux-aarch64.AppImage">Linux arm64</a> ·
+  <b>Download (Fedora & Linux x64):</b>
+  <a href="https://github.com/rahuljangirworks/pandacode/releases/latest/download/PandaCode-Linux-x86_64.rpm">Fedora Linux x64 (.rpm)</a> ·
+  <a href="https://github.com/rahuljangirworks/pandacode/releases/latest/download/PandaCode-Linux-x86_64.AppImage">Linux x64 (.AppImage)</a> ·
   <a href="https://github.com/rahuljangirworks/pandacode/releases">All releases</a>
 </p>
 
@@ -141,12 +138,8 @@ Download the latest build from
 
 | Platform | File | Requirements |
 | --- | --- | --- |
-| macOS (Apple silicon) | [`PandaCode-macOS-arm64.dmg`](https://github.com/rahuljangirworks/pandacode/releases/latest/download/PandaCode-macOS-arm64.dmg) | macOS 12+ |
-| macOS (Intel) | [`PandaCode-macOS-x64.dmg`](https://github.com/rahuljangirworks/pandacode/releases/latest/download/PandaCode-macOS-x64.dmg) | macOS 12+ |
-| Windows x64 | [`PandaCode-Windows-x64-setup.exe`](https://github.com/rahuljangirworks/pandacode/releases/latest/download/PandaCode-Windows-x64-setup.exe) | Windows 10 1809+ or Windows 11 |
-| Windows arm64 | [`PandaCode-Windows-arm64-setup.exe`](https://github.com/rahuljangirworks/pandacode/releases/latest/download/PandaCode-Windows-arm64-setup.exe) | Windows 11 on ARM (Snapdragon X and similar) |
-| Linux x64 | [`PandaCode-Linux-x86_64.AppImage`](https://github.com/rahuljangirworks/pandacode/releases/latest/download/PandaCode-Linux-x86_64.AppImage) | Ubuntu 22.04+ or compatible, X11 or XWayland |
-| Linux arm64 | [`PandaCode-Linux-aarch64.AppImage`](https://github.com/rahuljangirworks/pandacode/releases/latest/download/PandaCode-Linux-aarch64.AppImage) | Ubuntu 24.04+ aarch64 or compatible, X11 or XWayland |
+| Fedora Linux x64 (RPM) | [`PandaCode-Linux-x86_64.rpm`](https://github.com/rahuljangirworks/pandacode/releases/latest/download/PandaCode-Linux-x86_64.rpm) | Fedora Linux x86_64 (`sudo dnf install ./PandaCode-Linux-x86_64.rpm`) |
+| Linux x64 (AppImage) | [`PandaCode-Linux-x86_64.AppImage`](https://github.com/rahuljangirworks/pandacode/releases/latest/download/PandaCode-Linux-x86_64.AppImage) | Linux x86_64 (Fedora, Ubuntu 22.04+, Arch), X11 or XWayland |
 
 Or from a terminal: `npx pandacode` downloads the latest build, verifies its
 signature and installs it (on macOS it is signed locally for you, so no
