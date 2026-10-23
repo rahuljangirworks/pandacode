@@ -7,6 +7,6 @@
   "bin": { "pandacode": "bin/pandacode.mjs" },
   "files": ["bin", "installer.mjs", "icon.png", "LICENSE"],
   "engines": { "node": ">=18" },
-  "repository": { "type": "git", "url": "git+https://github.com/aicodeking/pandacode.git", "directory": "packages/npx" },
-  "homepage": "https://github.com/aicodeking/pandacode"
+  "repository": { "type": "git", "url": "git+https://github.com/rahuljangirworks/pandacode.git", "directory": "packages/npx" },
+  "homepage": "https://github.com/rahuljangirworks/pandacode"
 }

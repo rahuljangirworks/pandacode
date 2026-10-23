@@ -8,8 +8,8 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 // plugins.updater.pubkey from src-tauri/tauri.conf.json (a test keeps them equal).
-export const PUBKEY = 'dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDM3OEQ0RkYwQ0I4QzRGODEKUldTQlQ0ekw4RStOTnhNYW9jL1pTZENocVU3TGNPeVVxcDdzdkN4d0s3R2lPekxGRitGLzVwM3oK';
-export const BASE = 'https://github.com/aicodeking/pandacode/releases/latest/download';
+export const PUBKEY = 'dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDY3NDc3QjY5NzBBQzYyQUQKUldTdFlxeHdhWHRIWjBvQWsrYkF6RDNiVkxRNTBERGtrc3BXQzJyYmZITXdjRExFV1QyT3FZYjEK';
+export const BASE = 'https://github.com/rahuljangirworks/pandacode/releases/latest/download';
 const ASSETS = {
   'darwin-arm64': 'PandaCode-macOS-arm64.app.tar.gz',
   'darwin-x64': 'PandaCode-macOS-x64.app.tar.gz',

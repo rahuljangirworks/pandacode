@@ -137,6 +137,7 @@ jobs:
             printf -- '- **Linux arm64:** `chmod +x PandaCode-Linux-aarch64.AppImage` and run it.\n'
             printf -- '- **Any of the above, from a terminal:** `npx pandacode` downloads, verifies and installs the right build (macOS: signed locally automatically).\n\n'
             printf 'Each file has a `.sha256` checksum beside it. Installed copies update themselves from this page. Build from source: see CONTRIBUTING.md.\n'
+            printf '\n> This is a fork of [PandaCode](https://github.com/aicodeking/pandacode).\n'
           } > "$RUNNER_TEMP/notes.md"
       - name: Write the updater manifest
         run: |
@@ -148,14 +149,19 @@ jobs:
       - name: Create GitHub Release
         run: |
           ls -l assets
-          gh release create "v$VERSION" assets/* \
-            --title "PandaCode $VERSION" \
-            --notes-file "$RUNNER_TEMP/notes.md" \
-            --target "$GITHUB_SHA"
+          if gh release view "v$VERSION" >/dev/null 2>&1; then
+            gh release upload "v$VERSION" assets/* --clobber
+            gh release edit "v$VERSION" --title "PandaCode $VERSION" --notes-file "$RUNNER_TEMP/notes.md"
+          else
+            gh release create "v$VERSION" assets/* \
+              --title "PandaCode $VERSION" \
+              --notes-file "$RUNNER_TEMP/notes.md" \
+              --target "$GITHUB_SHA"
+          fi
 
   npm:
     needs: [prepare, publish]
-    if: github.ref_type == 'tag'
+    if: github.ref_type == 'tag' && github.repository == 'aicodeking/pandacode'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     permissions:
