@@ -2986,6 +2986,13 @@ async fn list_local_servers() -> Result<Vec<local_servers::LocalServer>> {
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 /// Process-wide setup that must happen before any thread or child process starts.
 pub fn prepare_environment() {
+    #[cfg(target_os = "linux")]
+    if std::env::var_os("WEBKIT_DISABLE_DMABUF_RENDERER").is_none() {
+        // WebKitGTK 2.42+ defaults to the GBM/DMABUF renderer, which fails with
+        // "Failed to create GBM buffer ... Invalid argument" on Linux/Fedora
+        // systems with NVIDIA/X11 or hybrid GPUs, leaving an unrendered window.
+        std::env::set_var("WEBKIT_DISABLE_DMABUF_RENDERER", "1");
+    }
     providers::widen_process_path();
 }
 
